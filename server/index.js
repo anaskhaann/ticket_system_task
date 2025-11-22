@@ -7,9 +7,24 @@ dotenv.config();
 connectDB();
 
 const app = express();
+const allowedOrigins = [
+  "https://ticket-system-frontend-yqm4.onrender.com",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static("uploads"));
