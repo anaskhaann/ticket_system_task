@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

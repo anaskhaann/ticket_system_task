@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { API_URL } from "../config/api";
 
 const UserDashboard = () => {
   const [tickets, setTickets] = useState([]);
@@ -29,10 +30,7 @@ const UserDashboard = () => {
             Authorization: `Bearer ${user.token}`,
           },
         };
-        const { data } = await axios.get(
-          "http://localhost:5000/api/tickets",
-          config
-        );
+        const { data } = await axios.get(`${API_URL}/api/tickets`, config);
         setTickets(data);
         setFilteredTickets(data);
       } catch (error) {

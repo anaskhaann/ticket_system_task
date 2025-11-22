@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { AlertTriangle, ArrowUpDown } from "lucide-react";
+import { API_URL } from "../config/api";
 
 const AdminDashboard = () => {
   const [metrics, setMetrics] = useState(null);
@@ -34,16 +35,10 @@ const AdminDashboard = () => {
           },
         };
 
-        const metricsRes = await axios.get(
-          "http://localhost:5000/api/dashboard",
-          config
-        );
+        const metricsRes = await axios.get(`${API_URL}/api/dashboard`, config);
         setMetrics(metricsRes.data);
 
-        const ticketsRes = await axios.get(
-          "http://localhost:5000/api/tickets",
-          config
-        );
+        const ticketsRes = await axios.get(`${API_URL}/api/tickets`, config);
         setTickets(ticketsRes.data);
         setFilteredTickets(ticketsRes.data);
 
@@ -127,7 +122,7 @@ const AdminDashboard = () => {
               )}
               {slaWarnings.length > 0 && (
                 <div className="text-yellow-700">
-                  ⏰ {slaWarnings.length} ticket(s) approaching SLA deadline
+                  {slaWarnings.length} ticket(s) approaching SLA deadline
                   (within 24 hours)
                 </div>
               )}

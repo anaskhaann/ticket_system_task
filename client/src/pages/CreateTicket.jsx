@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { API_URL } from "../config/api";
 
 const CreateTicket = () => {
   const [title, setTitle] = useState("");
@@ -52,7 +53,7 @@ const CreateTicket = () => {
         },
       };
 
-      await axios.post("http://localhost:5000/api/tickets", formData, config);
+      await axios.post(`${API_URL}/api/tickets`, formData, config);
       navigate("/");
     } catch (error) {
       console.error(error);

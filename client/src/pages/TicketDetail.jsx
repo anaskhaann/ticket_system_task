@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { FileIcon, ImageIcon } from "lucide-react";
+import { API_URL } from "../config/api";
 
 const TicketDetail = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const TicketDetail = () => {
           },
         };
         const { data } = await axios.get(
-          `http://localhost:5000/api/tickets/${id}`,
+          `${API_URL}/api/tickets/${id}`,
           config
         );
         setTicket(data);
@@ -64,15 +65,12 @@ const TicketDetail = () => {
         },
       };
       await axios.post(
-        `http://localhost:5000/api/tickets/${id}/responses`,
+        `${API_URL}/api/tickets/${id}/responses`,
         { message: response },
         config
       );
       setResponse("");
-      const { data } = await axios.get(
-        `http://localhost:5000/api/tickets/${id}`,
-        config
-      );
+      const { data } = await axios.get(`${API_URL}/api/tickets/${id}`, config);
       setTicket(data);
     } catch (error) {
       console.error(error);
@@ -87,14 +85,11 @@ const TicketDetail = () => {
         },
       };
       await axios.put(
-        `http://localhost:5000/api/tickets/${id}`,
+        `${API_URL}/api/tickets/${id}`,
         { status, priority, resolutionDate },
         config
       );
-      const { data } = await axios.get(
-        `http://localhost:5000/api/tickets/${id}`,
-        config
-      );
+      const { data } = await axios.get(`${API_URL}/api/tickets/${id}`, config);
       setTicket(data);
       alert("Ticket updated successfully");
     } catch (error) {
@@ -199,7 +194,7 @@ const TicketDetail = () => {
                     {ticket.attachments.map((file, idx) => (
                       <a
                         key={idx}
-                        href={`http://localhost:5000/${file.path}`}
+                        href={`${API_URL}/${file.path}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 p-2 border rounded hover:bg-gray-50"
