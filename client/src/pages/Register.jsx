@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+// Register Page similar to Login but with name field
 
 const Register = () => {
   const [name, setName] = useState("");

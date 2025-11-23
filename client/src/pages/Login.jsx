@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-
+// Check login creds
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -87,7 +87,7 @@ const Login = () => {
                 to="/admin/login"
                 className="text-red-600 hover:underline font-semibold"
               >
-                Admin Portal →
+                Admin Portal
               </Link>
             </p>
           </div>

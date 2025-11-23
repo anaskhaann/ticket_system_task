@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { FileIcon, ImageIcon } from "lucide-react";
 import { API_URL } from "../config/api";
 
+// Ticket Detail Page
 const TicketDetail = () => {
   const { id } = useParams();
   const { user } = useAuth();
@@ -28,6 +29,7 @@ const TicketDetail = () => {
   const [priority, setPriority] = useState("");
   const [resolutionDate, setResolutionDate] = useState("");
 
+  // Fetch ticket details on component load
   useEffect(() => {
     const fetchTicket = async () => {
       try {
@@ -56,6 +58,7 @@ const TicketDetail = () => {
     fetchTicket();
   }, [id, user.token]);
 
+  // Handle response submission for the ticket
   const handleResponseSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -97,8 +100,10 @@ const TicketDetail = () => {
     }
   };
 
-  if (!ticket) return <div>Loading...</div>;
+  // Show loading state if ticket is not yet fetched
+  if (!ticket) return <div>Loading</div>;
 
+  // SLA Status Checkers
   const isSLANearBreach = () => {
     if (
       !ticket.resolutionDate ||

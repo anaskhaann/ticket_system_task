@@ -11,12 +11,13 @@ const Layout = ({ children }) => {
     navigate("/login");
   };
 
+  // Dashboard layout
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gray-900">TicketSys</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Tea-Kiting</h1>
             <nav className="ml-10 space-x-4">
               <Link to="/" className="text-gray-500 hover:text-gray-900">
                 Dashboard
@@ -31,6 +32,7 @@ const Layout = ({ children }) => {
               )}
             </nav>
           </div>
+          {/* Show user name and role and handle logout on clicking. */}
           <div className="flex items-center space-x-4">
             <span className="text-sm text-gray-700">
               Welcome, {user?.name} ({user?.role})
@@ -41,7 +43,8 @@ const Layout = ({ children }) => {
           </div>
         </div>
       </header>
-      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      {/* All tickets will be shown below and grow as per no. of tickets increases. */}
+      <main className="grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         {children}
       </main>
     </div>

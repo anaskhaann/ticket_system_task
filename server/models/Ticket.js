@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Ticket Database Schema
 const ticketSchema = mongoose.Schema(
   {
     user: {

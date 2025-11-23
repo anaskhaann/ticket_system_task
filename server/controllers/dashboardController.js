@@ -15,10 +15,11 @@ const getDashboardMetrics = async (req, res) => {
   const inProgressTickets = await Ticket.countDocuments({
     status: "In Progress",
   });
+  // Closed tickets and resolved will be counted as seperated but on metrics they are same, Because we may closed some tickets because of irrelevance and resolved some by solving the issue.
   const resolvedTickets = await Ticket.countDocuments({ status: "Resolved" });
   const closedTickets = await Ticket.countDocuments({ status: "Closed" });
 
-  // Simple SLA breach logic: if status is not Resolved/Closed and resolutionDate < now
+  // Simple SLA breach if status is not Resolved/Closed before resolutionDate
   const now = new Date();
   const breachedTickets = await Ticket.countDocuments({
     status: { $nin: ["Resolved", "Closed"] },

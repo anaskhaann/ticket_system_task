@@ -1,3 +1,5 @@
+// This file manages authentication state and provides login, registration, and logout functionalities.
+
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { API_URL } from "../config/api";
@@ -16,6 +18,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  // Login function: Sends email and password to the server and stores user data on success
   const login = async (email, password) => {
     try {
       const { data } = await axios.post(`${API_URL}/api/auth/login`, {
@@ -33,6 +36,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Registration function: Sends name, email, and password to the server and stores user data on success
   const register = async (name, email, password) => {
     try {
       const { data } = await axios.post(`${API_URL}/api/auth/register`, {
@@ -51,11 +55,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Logout function: Clears user data from state and local storage
   const logout = () => {
     localStorage.removeItem("userInfo");
     setUser(null);
   };
 
+  // Provide authentication state and functions to children components
   return (
     <AuthContext.Provider value={{ user, login, register, logout, loading }}>
       {children}

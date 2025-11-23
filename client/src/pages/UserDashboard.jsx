@@ -1,3 +1,4 @@
+// This file is similar to Admin Dashboard but tailored for regular users to view and manage their tickets.
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
@@ -16,6 +17,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { API_URL } from "../config/api";
 
+// User Dashboard: Display user's tickets with filtering options
 const UserDashboard = () => {
   const [tickets, setTickets] = useState([]);
   const [filteredTickets, setFilteredTickets] = useState([]);

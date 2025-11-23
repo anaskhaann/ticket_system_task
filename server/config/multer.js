@@ -1,3 +1,6 @@
+// This file configures multer for handling file uploads in the server.
+// Custom limit is set to restrict file size till 5 Mb.
+
 const multer = require("multer");
 const path = require("path");
 

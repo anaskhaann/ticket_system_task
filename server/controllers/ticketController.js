@@ -1,9 +1,9 @@
 const Ticket = require("../models/Ticket");
 const User = require("../models/User");
 
-// @desc    Get tickets
-// @route   GET /api/tickets
-// @access  Private
+// Get tickets :sorted order by creation date
+// GET /api/tickets
+// Private
 const getTickets = async (req, res) => {
   let tickets;
   if (req.user.role === "admin") {
@@ -19,9 +19,9 @@ const getTickets = async (req, res) => {
   res.status(200).json(tickets);
 };
 
-// @desc    Get single ticket
-// @route   GET /api/tickets/:id
-// @access  Private
+// Get single ticket
+// GET /api/tickets/:id
+// Private
 const getTicket = async (req, res) => {
   const ticket = await Ticket.findById(req.params.id)
     .populate("user", "name email")
@@ -40,10 +40,9 @@ const getTicket = async (req, res) => {
   res.status(200).json(ticket);
 };
 
-// @desc    Create new ticket
-// @route   POST /api/tickets
-
-// @access  Private
+// Create new ticket: With the below mentioned fields and optional atahcments
+// POST /api/tickets
+// Private
 const createTicket = async (req, res) => {
   const { title, description, category, priority } = req.body;
 
@@ -52,6 +51,7 @@ const createTicket = async (req, res) => {
     return;
   }
 
+  // Images
   const attachments = req.files
     ? req.files.map((file) => ({
         filename: file.originalname,
@@ -72,7 +72,7 @@ const createTicket = async (req, res) => {
   res.status(201).json(ticket);
 };
 
-// Update ticket
+// Update ticket: Which is available
 // PUT /api/tickets/:id
 // Private
 const updateTicket = async (req, res) => {

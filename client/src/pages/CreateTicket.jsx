@@ -17,6 +17,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { API_URL } from "../config/api";
 
+// CreateTicket component for submitting new support tickets
 const CreateTicket = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -31,6 +32,7 @@ const CreateTicket = () => {
     setImages(files);
   };
 
+  // Handle form submission to create a new ticket
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
@@ -96,6 +98,7 @@ const CreateTicket = () => {
                   <SelectItem value="Network">Network</SelectItem>
                   <SelectItem value="Access">Access</SelectItem>
                   <SelectItem value="Other">Other</SelectItem>
+                  {/* We might as well loop over this and show it in a single line but idk how to do that tbh */}
                 </SelectContent>
               </Select>
             </div>

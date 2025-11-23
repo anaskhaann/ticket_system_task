@@ -11,6 +11,7 @@ const {
 const { protect } = require("../middleware/authMiddleware");
 const upload = require("../config/multer");
 
+// Tickets routes with max 5 img
 router
   .route("/")
   .get(protect, getTickets)

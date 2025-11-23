@@ -1,13 +1,15 @@
+// Import JWT for token handling and User model for database operations
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
+// Function to create a JWT token for user authentication, valid for 15 days
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "15d",
   });
 };
 
-// Auth user & get token
+// Handle user login: verify email and password, return user data and token if valid
 // POST /api/auth/login
 // Public
 const loginUser = async (req, res) => {

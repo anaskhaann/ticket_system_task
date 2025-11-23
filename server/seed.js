@@ -1,3 +1,5 @@
+// Run this file initially to create an admin user in production, Because i have not added a registration route for admin users i was not able to figure that out.
+
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const User = require("./models/User");

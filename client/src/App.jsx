@@ -21,11 +21,13 @@ const PrivateRoute = ({ children }) => {
   return user ? children : <Navigate to="/login" />;
 };
 
+// Dashboard component to route based on user role
 const Dashboard = () => {
   const { user } = useAuth();
   return user.role === "admin" ? <AdminDashboard /> : <UserDashboard />;
 };
 
+// Main App component with routing
 const App = () => {
   return (
     <Router>

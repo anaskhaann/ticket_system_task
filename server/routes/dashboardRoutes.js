@@ -1,3 +1,5 @@
+// Depend on the user's role, Show dashboard metrics accordingly.
+
 const express = require("express");
 const router = express.Router();
 const { getDashboardMetrics } = require("../controllers/dashboardController");

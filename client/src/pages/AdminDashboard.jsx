@@ -26,6 +26,7 @@ const AdminDashboard = () => {
   const [slaWarnings, setSlaWarnings] = useState([]);
   const { user } = useAuth();
 
+  // Fetch metrics and tickets
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,6 +43,7 @@ const AdminDashboard = () => {
         setTickets(ticketsRes.data);
         setFilteredTickets(ticketsRes.data);
 
+        // Check for SLA warnings
         const warnings = ticketsRes.data.filter((ticket) => {
           if (
             !ticket.resolutionDate ||
@@ -50,6 +52,7 @@ const AdminDashboard = () => {
           ) {
             return false;
           }
+          // Check for current time vs resolution date
           const now = new Date();
           const slaDate = new Date(ticket.resolutionDate);
           const hoursRemaining = (slaDate - now) / (1000 * 60 * 60);
@@ -64,6 +67,7 @@ const AdminDashboard = () => {
     fetchData();
   }, [user.token]);
 
+  // Filter and sort tickets functioanlity
   useEffect(() => {
     let filtered = tickets;
 
@@ -131,6 +135,7 @@ const AdminDashboard = () => {
         </Card>
       )}
 
+      {/* Metrics Dashboard Overview */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -186,6 +191,7 @@ const AdminDashboard = () => {
         </Card>
       </div>
 
+      {/* Filter by category */}
       <Card className="mb-6">
         <CardHeader>
           <CardTitle>Filter & Sort Tickets</CardTitle>
@@ -208,6 +214,7 @@ const AdminDashboard = () => {
             </Select>
           </div>
 
+          {/* Filter vy Priority */}
           <div className="space-y-2">
             <Label>Priority</Label>
             <Select value={priorityFilter} onValueChange={setPriorityFilter}>
@@ -223,6 +230,7 @@ const AdminDashboard = () => {
             </Select>
           </div>
 
+          {/* Sort by Resolution Date */}
           <div className="space-y-2">
             <Label className="flex items-center gap-2">
               <ArrowUpDown className="w-4 h-4" />

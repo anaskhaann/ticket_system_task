@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
+// User Schema for Database creation
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -27,6 +28,7 @@ const userSchema = mongoose.Schema(
   }
 );
 
+// Here we are hashing the password before saving it to the database as discussed in interview because of security reasons.
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };

@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+// This file is used for connecting to the MongoDB database using Mongoose
+
+const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {

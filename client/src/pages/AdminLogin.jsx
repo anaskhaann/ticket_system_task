@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import { ShieldCheck } from "lucide-react";
 
+// Admin Login Page
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +39,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-700">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <Card className="w-[400px] shadow-2xl">
         <CardHeader className="space-y-1">
           <div className="flex items-center justify-center mb-4">
@@ -89,7 +90,7 @@ const AdminLogin = () => {
         </CardContent>
         <CardFooter className="flex flex-col space-y-2">
           <div className="text-sm text-center text-gray-500 w-full">
-            <Link to="/login" className="text-blue-600 hover:underline">
+            <Link to="/login" className="text-black hover:underline">
               ← Back to User Login
             </Link>
           </div>
