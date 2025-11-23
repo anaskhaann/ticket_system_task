@@ -1,23 +1,6 @@
-# 🎫 Internal Ticketing System
+# Internal Ticketing System
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Running Locally](#running-locally)
-- [Deployment](#deployment)
-- [Key Features Implementation](#key-features-implementation)
-- [Project Structure](#project-structure)
-- [API Documentation](#api-documentation)
-- [Database Schema](#database-schema)
-- [Environment Variables](#environment-variables)
-- [Contributing](#contributing)
-
----
-
-## ✨ Features
+## Features
 
 ### User Features
 
@@ -58,17 +41,17 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
-- **React** 18.3 - UI library
-- **React Router** 6.x - Client-side routing
-- **Vite** 7.x - Build tool and dev server
-- **Tailwind CSS** v4 - Utility-first CSS framework
-- **Shadcn UI** - Accessible component library
-- **Axios** - HTTP client
-- **Lucide React** - Icon library
+- **React**
+- **React Router**
+- **Vite**
+- **Tailwind CSS**
+- **Shadcn UI**
+- **Axios**
+- **Lucide React**
 
 ### Backend
 
@@ -118,7 +101,7 @@
 
 ---
 
-## 📥 Installation
+## Installation & Usage
 
 ### Prerequisites
 
@@ -284,7 +267,7 @@ Frontend runs on `http://localhost:5173`
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ticketing-system/
@@ -336,7 +319,7 @@ ticketing-system/
 
 ---
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### User Collection
 
